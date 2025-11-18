@@ -36,9 +36,9 @@ GitHub Pages: Para hospedagem gratuita e contínua.
 
 ---
 
-##  Créditos e Colaboradores
+## 🤝 Créditos e Colaboradores
 
 Este projeto foi uma colaboração em equipe:
 
-*@jupcouto* - (Desenvolvimento da Estrutura Base e Design)
-*@paulo-hdourado* - (Revisão de Código, Adição de Conteúdo e Publicação)
+* @jupcouto - (Desenvolvimento da Estrutura Base e Design)
+* @paulo-hdourado - (Revisão de Código, Adição de Conteúdo e Publicação)
