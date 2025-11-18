@@ -1,0 +1,601 @@
+/* ============================================= */
+/* 1. Configs Globais e Paleta de Cores */
+/* ============================================= */
+:root {
+  /* Cores Principais */
+  --verde-principal: #61b9b4;  /* Verde principal do layout */
+  --rosa-forte: #cf1c6c;       /* Rosa principal (títulos, destaques) */
+  --amarelo-dourado: #d1b06b;  /* Dourado (usado pouco, mas tá aqui) */
+  
+  /* Cores Neutras e de Fundo */
+  --fundo-claro: #f7f6f9;    /* Fundo claro (padrão do site) */
+  --branco: #ffffff;
+  --preto-texto: #333;       /* Texto padrão mais escuro */
+  --cinza-texto: #555;       /* Texto secundário */
+}
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--fundo-claro); 
+  color: var(--preto-texto);
+  scroll-behavior: smooth;
+}
+
+/* Título H2 (Padrão Cursivo) */
+h2 {
+  font-family: "Pacifico", cursive; 
+  color: var(--rosa-forte);       
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Config geral das seções */
+section {
+  padding: 5rem 2rem;
+  overflow: hidden; 
+}
+
+/* ============================================= */
+/* 2. Navbar (Menu Fixo) */
+/* ============================================= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--verde-principal); 
+
+  /* Ajuste de padding para altura */
+  padding: 10px 2rem; /* ANTES: 8px 2rem */
+
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo img {
+  /* Tamanho do logo (círculo) */
+  height: 90px; /* ANTES: 80px */
+  width: 90px;  /* ANTES: 80px */
+  
+  background-color: var(--branco); 
+  border-radius: 50%; 
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+  
+  /* 'cover' pra forçar o logo a preencher o círculo */
+  object-fit: cover; 
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--branco); 
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+/* Efeito hover dos links do menu */
+.nav-links a:hover {
+  color: var(--rosa-forte); 
+}
+
+/* Menu hamburguer (mobile) */
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  color: var(--branco);
+  cursor: pointer;
+}
+
+/* ============================================= */
+/* 3. Hero Section (Banner Principal) */
+/* ============================================= */
+
+.hero {
+  background: var(--fundo-claro); 
+  width: 100%;
+  min-height: 90vh;
+  padding: 10rem 2rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* --- Lado Esquerdo: Texto --- */
+.hero-content {
+  flex: 1;
+  max-width: 550px;
+}
+
+/* Style do sub-título (DELÍCIAS DA RAY) */
+.hero-logo-nutri {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: var(--cinza-texto); 
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+
+.hero-content h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 3.5rem; 
+  font-weight: 700;
+  color: var(--rosa-forte); 
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  text-align: left; 
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  color: var(--cinza-texto);
+  margin-bottom: 2rem;
+}
+
+/* Botão principal do Hero */
+.btn-hero {
+  background-color: var(--rosa-forte); 
+  color: var(--branco); 
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  
+  /* Transição suave pra incluir sombra e cor */
+  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+  
+  /* Sombra inicial sutil */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.btn-hero:hover {
+  /* Escurece o fundo */
+  background-color: #bb175e; 
+  
+  /* Sombra mais forte e elevada */
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  
+  /* Efeito de "levantar" no hover */
+  transform: translateY(-3px) scale(1.02); 
+}
+
+/* --- Lado Direito: Imagem --- */
+.hero-image-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Alinhamento vertical */
+  padding-left: 2rem;
+  position: relative; 
+  /* Hack de min-height pra imagem descer */
+  min-height: 400px; 
+}
+
+.hero-image-wrapper img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  clip-path: ellipse(60% 50% at 50% 50%);
+  object-fit: contain;
+  
+  position: relative;
+  z-index: 2;
+
+  /* Empurra a imagem pra baixo */
+  transform: translateY(30px); 
+}
+
+/* Sombra projetada (fake shadow) */
+.hero-image-wrapper::after {
+  content: '';
+  position: absolute;
+  z-index: 1; 
+  
+  /* Posição da sombra (no "chão") */
+  bottom: 0px; 
+  left: 0;
+  right: 0;
+  margin: 0 auto; 
+  
+  width: 70%;
+  height: 35px; 
+  background-color: rgba(0, 0, 0, 0.25); 
+  border-radius: 50%; 
+  filter: blur(15px);
+  opacity: 0.6;
+}
+
+/* Responsividade para a imagem no mobile */
+@media (max-width: 768px) {
+  .hero-image-wrapper {
+    padding-left: 0;
+    min-height: 250px; /* Altura ajustada para mobile */
+  }
+  
+  .hero-image-wrapper img {
+     max-width: 300px;
+     /* REMOVIDO: transform: translateY(-5px); */
+  }
+  
+  .hero-image-wrapper::after {
+    bottom: 0px; /* Ajustado para o mobile também */
+    height: 25px;
+    width: 60%;
+    filter: blur(10px);
+    opacity: 0.5;
+  }
+}
+
+/* ============================================= */
+/* 4. Seção Sobre (Ray) */
+/* ============================================= */
+.sobre-ceo {
+  background-color: var(--fundo-claro); 
+  color: var(--preto-texto); 
+}
+
+.sobre-ceo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* --- Imagem da Ray --- */
+.sobre-ceo-imagem {
+  flex: 1;
+  text-align: center;
+  max-width: 400px;
+}
+
+.sobre-ceo-imagem h3 {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  font-weight: 500;
+  color: var(--preto-texto); /* Nome escuro */
+}
+
+.sobre-ceo-imagem p {
+  font-size: 1.1rem;
+  color: var(--cinza-texto); /* Cargo em cinza */
+  font-weight: 600;
+}
+
+.sobre-ceo-imagem img {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%; 
+  
+  object-fit: cover; 
+  object-position: center; /* O padrão, que agora vai funcionar */
+  
+  border: 4px solid var(--verde-principal); 
+}
+
+/* --- Lado Direito: Texto (Sobre) --- */
+.sobre-ceo-texto {
+  flex: 1.5; 
+  max-width: 600px;
+}
+
+/* Título H2 (Fonte Poppins) */
+.sobre-ceo-texto h2 {
+  color: var(--rosa-forte); /* Título em rosa */
+  font-size: 2.5rem;
+  font-family: "Poppins", sans-serif; 
+  font-weight: 600;
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.sobre-ceo-texto p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  color: var(--cinza-texto); /* Texto em cinza */
+}
+
+
+/* ============================================= */
+/* 5. CATÁLOGO */
+/* ============================================= */
+.catalogo {
+  background-color: var(--fundo-claro);
+}
+
+/* H2 (Cursivo) */
+
+.catalogo .cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.card {
+  background-color: var(--branco); 
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  overflow: hidden;
+  width: 250px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: 1px solid #eee;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card h3 {
+  margin: 1rem;
+  color: var(--rosa-forte); 
+  text-align: center;
+}
+
+.ver-cardapio {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.btn-cardapio {
+  background-color: var(--verde-principal); 
+  color: var(--branco);
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-cardapio:hover {
+  background-color: #50a09b; 
+  transform: scale(1.05);
+}
+
+/* ============================================= */
+/* 6. Seção Clientes (Depoimentos) */
+/* ============================================= */
+.clientes {
+  background-color: var(--fundo-claro); 
+  color: var(--preto-texto); 
+}
+
+.clientes-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Título H2 (Fonte Poppins) */
+.clientes h2 {
+  color: var(--rosa-forte); 
+  font-family: "Poppins", sans-serif; 
+  font-weight: 600;
+  text-align: left;
+  margin-bottom: 3rem;
+}
+
+.depoimento {
+  border-bottom: 2px solid var(--verde-principal); /* Divisória verde */
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+}
+.depoimento:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.depoimento blockquote {
+  font-size: 1.3rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--cinza-texto); /* Texto em cinza */
+  margin-bottom: 1rem;
+}
+
+.depoimento p {
+  font-size: 1rem;
+  color: var(--rosa-forte); /* Nome do cliente em rosa */
+  font-weight: 500;
+  text-align: right;
+}
+
+
+/* ============================================= */
+/* 7. CONTATO */
+/* ============================================= */
+.contato {
+  background-color: var(--fundo-claro);
+}
+
+/* H2 (Cursivo) */
+
+.contato-texto {
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+.email-link {
+  color: var(--rosa-forte); 
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.contato-botoes {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.btn-social {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--verde-principal); 
+  color: var(--branco);
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: transform 0.3s, background-color 0.3s;
+  font-size: 1rem;
+}
+
+.btn-social:hover {
+  background-color: #50a09b; 
+  transform: translateY(-3px);
+}
+
+.btn-social i {
+  font-size: 1.2rem;
+}
+
+/* ============================================= */
+/* 8. RODAPÉ */
+/* ============================================= */
+footer {
+  background-color: var(--verde-principal); 
+  color: var(--branco);
+  text-align: center;
+  padding: 1.5rem;
+}
+
+/* ============================================= */
+/* 9. Animação de Scroll (JS) */
+/* ============================================= */
+section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================= */
+/* 10. Media Queries (Responsivo) */
+/* ============================================= */
+@media (max-width: 768px) {
+  
+  section {
+    padding: 3rem 1rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+
+  /* Navbar Mobile */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: var(--verde-principal);
+    position: absolute;
+    top: 70px; /* Isso aqui depende da altura do menu */
+    right: 0;
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+  }
+  .nav-links.active {
+    display: flex;
+  }
+  .hamburger {
+    display: block;
+  }
+
+  /* Hero Mobile */
+  .hero {
+    padding-top: 8rem;
+    text-align: center;
+  }
+  .hero-container {
+    flex-direction: column-reverse; 
+    gap: 1rem;
+  }
+  .hero-content h1 {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+  .hero-content p {
+    font-size: 1rem;
+  }
+  .hero-image-wrapper img {
+     max-width: 350px;
+     clip-path: ellipse(75% 50% at 50% 50%);
+  }
+
+  /* Sobre CEO Mobile */
+  .sobre-ceo-container {
+    flex-direction: column; 
+    gap: 2rem;
+  }
+  .sobre-ceo-texto h2 {
+    text-align: center;
+  }
+  .sobre-ceo-imagem img {
+    width: 200px;
+    height: 200px;
+  }
+  
+  /* Catálogo Mobile */
+  .catalogo .cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .card {
+    width: 90%; 
+    max-width: 300px;
+  }
+
+  /* Clientes Mobile */
+  .clientes h2 {
+    text-align: center;
+  }
+  .depoimento blockquote {
+    font-size: 1.1rem;
+  }
+  
+  /* Contato Mobile */
+  .contato-botoes {
+    flex-direction: column;
+  }
+  
+}
