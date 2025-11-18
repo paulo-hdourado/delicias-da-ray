@@ -511,6 +511,16 @@ section.visible {
 }
 
 /* ============================================= */
+/* FIX: Corrigir o carregamento em branco (Força o Hero a aparecer) */
+/* ============================================= */
+#inicio {
+  opacity: 1;
+  transform: translateY(0);
+  /* Isso garante que o Hero apareça sem o atraso da animação */
+  transition: none !important; 
+}
+
+/* ============================================= */
 /* 10. Media Queries (Responsivo) */
 /* ============================================= */
 @media (max-width: 768px) {
@@ -598,4 +608,5 @@ section.visible {
     flex-direction: column;
   }
   
+
 }
