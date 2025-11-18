@@ -40,5 +40,5 @@ GitHub Pages: Para hospedagem gratuita e contínua.
 
 Este projeto foi uma colaboração em equipe:
 
-* @jupcouto - (Desenvolvimento da Estrutura Base e Design)
-* @paulo-hdourado - (Revisão de Código, Adição de Conteúdo e Publicação)
+* [@jupcouto](https://github.com/jupcouto) - (Desenvolvimento da Estrutura Base e Design)
+* [@paulo-hdourado](https://github.com/paulo-hdourado) - (Revisão de Código, Adição de Conteúdo e Publicação)
