@@ -62,17 +62,23 @@ section {
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
+nav {
+  height: 90px;
+  display: flex;
+  align-items: center; /* mantém tudo centralizado verticalmente */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
 .logo img {
-  /* Tamanho do logo (círculo) */
-  height: 90px; /* ANTES: 80px */
-  width: 90px;  /* ANTES: 80px */
-  
-  background-color: var(--branco); 
-  border-radius: 50%; 
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
-  
-  /* 'cover' pra forçar o logo a preencher o círculo */
-  object-fit: cover; 
+  height: 80px;      /* agora usamos height normal */
+  width: auto;
+
+  transform: scale(1.8);  /* aumenta sem estourar navbar */
+  transform-origin: left center;
 }
 
 .nav-links {
